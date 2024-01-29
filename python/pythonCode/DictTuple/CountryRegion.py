@@ -52,7 +52,15 @@ population={
     'Pakistan':21
 }
 
-printDict(population)
-addDict(population)
-removeDict(population)
-printPopulation(population)
+operation=input("Enter operation (add, remove, query or print):")
+
+if(operation.lower()=='print'):
+    printDict(population)
+elif(operation.lower()=='add'):
+    addDict(population)
+elif(operation.lower()=='remove'):
+    removeDict(population)
+elif(operation.lower()=='query'):
+    printPopulation(population)
+else:
+    print('Invalid Operation')
