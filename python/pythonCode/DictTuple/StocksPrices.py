@@ -19,7 +19,17 @@ def printSP(StockPrices):
         print(f"{stocks}==>{prices}==>{round(statistics.mean(prices),2)}")
 
 def add(StockPrices):
-    ...
+    sName = input("Enter stock name : ")
+    sPrice=int(input("Enter stock price: "))
+    for stocks,price in StockPrices.items():
+        if sName == stocks:
+            print("STOCK ALREADY EXISTS")
+            break
+        else:
+            StockPrices[sName]=[sPrice]
+            break
+    for stocks,prices in StockPrices.items():
+        print(f"{stocks}==>{prices}")
 
 
 
@@ -29,12 +39,10 @@ StockPrices={
     'mtl':[234,180,160]
 }
 
-printSP(StockPrices)
-
-# operation=input("Enter the operation you want to commit : a.print b.add")
-# if(operation.lower()=='print'):
-#     printSP(StockPrices)
-# elif(operation.lower()=='add'):
-#     add(StockPrices)
-# else:
-#     print("INVALID CHOICE TRY AGAIN")
+operation=input("Enter the operation you want to commit \n a.print \n b.add \n")
+if(operation.lower()=='print'):
+    printSP(StockPrices)
+elif(operation.lower()=='add'):
+    add(StockPrices)
+else:
+    print("INVALID CHOICE TRY AGAIN")
