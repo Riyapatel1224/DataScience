@@ -1,11 +1,11 @@
-# f = open('/Users/riya/Documents/DataScience/python/pythonCode/FileObjects/test.txt', 'r') 
+# f = open('FileObjects/practice/test.txt', 'r') 
 # print(f.name) # name of the file
 # print(f.mode) #  mode in which file is opened
 # f.close()    # close the file
 
 
 # automatically close the file for you and create a variable at the end 
-with open('FileObjects/test.txt', 'r') as f:
+with open('FileObjects/practice/test.txt', 'r') as f:
     f_contents=f.read() #  read all contents of the file
     print(f_contents) #  display content of the file
     
