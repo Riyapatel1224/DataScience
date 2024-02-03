@@ -15,7 +15,7 @@ with open('FileObjects/practice/test.txt', 'r') as f:
     f2_contents = f.readline() #  read one line from the file
     print(f2_contents)         #  display one line of the file
     
-    for line in f:    # loop through each line of the file
+    for line in f:    # loop through each line of the files
         print(line,end='')    #  iterate over each line of the file
     
     f3_contents=f.read(100) #  read first 100 characters of the file
