@@ -24,24 +24,26 @@
 import csv
 
 newDict={}
-final={}
+data_list=[]
 with open('Exercise/stocks.csv','r') as f:
     fDict=csv.DictReader(f)
     for row in fDict:
         
-        PERation=int(row['Price'])/int(row['Earnings Per Share'])
-        PBRation=int(row['Price'])/int(row[' Book Value'])
+        PERatio=int(row['Price'])/int(row['Earnings Per Share'])
+        PBRatio=int(row['Price'])/int(row[' Book Value'])
             
-        newDict['Company Name']=row.get('Company Name')
-        newDict['PE Ratio']=round(PERation,2)
-        newDict['PB Ratio']=round(PBRation,2)
-        final.update(newDict)
-        print(newDict)
+        new_dict = {
+            'Company Name': row.get('Company Name'),
+            'PE Ratio': round(PERatio, 2),
+            'PB Ratio': round(PBRatio, 2)
+        }
         
-        fieldnames=['Company Name','PE Ratio','PB Ratio']
-        with open('Exercise/output.csv','w') as fw:
+        data_list.append(new_dict)
+        
+fieldnames=['Company Name','PE Ratio','PB Ratio']
+with open('Exercise/output.csv','w',newline='') as fw:
             
-            csv_writer=csv.DictWriter(fw,fieldnames=fieldnames)
-            csv_writer.writeheader()
-            csv_writer.writerows(newDict)
-            
+    csv_writer=csv.DictWriter(fw,fieldnames=fieldnames)
+    csv_writer.writeheader()
+    csv_writer.writerows(data_list)
+    
