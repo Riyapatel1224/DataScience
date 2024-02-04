@@ -15,13 +15,33 @@
 # Tata Steel	4.39	       0.68
 
 # {'Company Name': 'Reliance', 'Price': '1467', 'Earnings Per Share': '66', ' Book Value': '653'}
+# {'Company Name': 'Tata Steel', 'Price': '391', 'Earnings Per Share': '89', ' Book Value': '572'}
+# {'Company Name': 'Infosys', 'Price': '650', 'Earnings Per Share': '35', ' Book Value': '147'}
+# {'Company Name': 'Axis Bank', 'Price': '739', 'Earnings Per Share': '19', ' Book Value': '263'}
+# {'Company Name': 'Bajaj Finance', 'Price': '4044', 'Earnings Per Share': '69', ' Book Value': '341'}
 
 
 import csv
 
 newDict={}
+final={}
 with open('Exercise/stocks.csv','r') as f:
     fDict=csv.DictReader(f)
     for row in fDict:
-        for key,value in row.items():
-            print()
+        
+        PERation=int(row['Price'])/int(row['Earnings Per Share'])
+        PBRation=int(row['Price'])/int(row[' Book Value'])
+            
+        newDict['Company Name']=row.get('Company Name')
+        newDict['PE Ratio']=round(PERation,2)
+        newDict['PB Ratio']=round(PBRation,2)
+        final.update(newDict)
+        print(newDict)
+        
+        fieldnames=['Company Name','PE Ratio','PB Ratio']
+        with open('Exercise/output.csv','w') as fw:
+            
+            csv_writer=csv.DictWriter(fw,fieldnames=fieldnames)
+            csv_writer.writeheader()
+            csv_writer.writerows(newDict)
+            
